@@ -16,8 +16,6 @@ public class Pomodoro extends JFrame {
     private long startMinutes;
     private long breakMinutes;
     private PomodoroStatus status;
-
-    // 後から生成
     private Timer timer;
 
     public Pomodoro(String userId){
@@ -29,8 +27,8 @@ public class Pomodoro extends JFrame {
     }
 
     // timerクラスの初期化
-    public Timer createTimer(JLabel timeLabel){
-        return  new Timer(1000, new ActionListener() {
+    public void createTimer(JLabel timeLabel){
+        this.timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (startMinutes > 0) {
@@ -62,12 +60,12 @@ public class Pomodoro extends JFrame {
         };
     }
 
-    public ActionListener reset(JLabel timeLabel){
+    public ActionListener reset(JLabel timeLabel, String startMinutes){
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
-                timeLabel.setText(formatTime(startMinutes));
+                timeLabel.setText(startMinutes);
             }
         };
     }

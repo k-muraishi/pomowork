@@ -28,7 +28,7 @@ public class PomodoroController {
         JButton stopButton = new JButton("Stop");
         stopButton.addActionListener(pomodoro.stop());
         JButton resetButton = new JButton("Reset");
-        resetButton.addActionListener(pomodoro.reset(timeLabel));
+        resetButton.addActionListener(pomodoro.reset(timeLabel, pomodoro.getStartMinutes()));
 
         // Arrange components in the window
         pomodoro.setLayout(new BorderLayout());
